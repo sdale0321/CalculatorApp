@@ -1,20 +1,22 @@
-*, *::before, *::after {
+*, *::before, *::after { /* select everything, to set box-sizing to border box -> this makes sizing things much easier */
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    background: linear-gradient(to right, #d400ff, #003cff);    
+body { 
+    margin: 0; /* setting margin to 0, removes all margin from body */
+    background: linear-gradient(to right, #d400ff, #003cff); 
 }
 
 .calculator-grid {
     display: grid;
     margin-top: 2rem;
-    grid-template-columns: repeat(4, 6rem);
-    grid-template-rows: minmax(7rem, auto) repeat(5, 6rem);
+    justify-content: center;
+    grid-template-columns: repeat(4, 6rem); /* 4 different columns at specified width */
+    grid-template-rows: minmax(7rem, auto) repeat(5, 6rem); /* this will determine the height of our box.  The 'auto' value allows for the height of a row to increase if necessary - this applies to our output field where users will be entering values for operation */
+                                            /* the repeat function creates the rest of our rows, not concerning the output field */
 }
 
-.calculator-grid > button {
+.calculator-grid > button { /* styles the numerical and operation buttons in our grid */
     cursor: pointer;
     font-size: 2rem;
     border: 1px solid white;
@@ -28,22 +30,22 @@ body {
 }
 
 .span-two {
-    grid-column: span 2;
+    grid-column: span 2; /* allows our 'ac' and '=' buttons to span 2 column widths */
 }
 
 .output {
-    grid-column: 1 / -1;
-    background-color: rgba(0, 0, 0, .75);
+    grid-column: 1 / -1; /* this ensures the output field takes up the entire top row */
+    background-color: rgba(0, 0, 0, .75); /* the rest of the CSS for output concerns aesthetics */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* vertically stacks the text inside output field  */
     align-items: flex-end;
-    justify-content: space-around;
-    padding: .75rem;
+    justify-content: space-around; /* includes space b/w previous and current operand, so they don't sit right on top of eachother */
+    padding: .75rem; /* ensures the text inside output field does not touch the edges */
     word-wrap: break-word;
     word-break: break-all;
 }
 
-.output .previous-operand {
+.output .previous-operand { /* makes it to where the number in output field  */
     color: rgba(255, 255, 255, .75);
     font-size: 1.5rem;
 }

@@ -137,15 +137,17 @@ function formatOperand(operand) {
 }
 
 function App() {
-  const [ { currentOperand, previousOperand, operation }, dispatch] = useReducer(
-    reducer, 
+  const [ { currentOperand, previousOperand, operation }, dispatch] = useReducer( 
+  reducer, 
     {}
   )
+  // Your reducer will calculate and return the next state. React will store that next state, render your component with it, and update the UI. 
+  // useReducer is very similar to useState , but it lets you move the state update logic from event handlers into a single function outside of your component.
 
-  //dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit: 1 }})
+  // dispatch({ type: ACTIONS.ADD_DIGIT, payload: { digit: 1 }})
   return (
     <div className="calculator-grid">
-      <div className="output">
+      <div className="output"> {/*//output will include previous operand and current operand*/}
         <div className="previous-operand">
           {formatOperand(previousOperand)} {operation}
         </div> 
